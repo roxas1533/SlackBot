@@ -15,7 +15,6 @@ import time
 
 def main():
     slack = Slacker(slackbot_settings.API_TOKEN)
-    slack.chat.post_message('URZM8NGHY', "テストです11", as_user=True)
     print("取得します")
     options = ChromeOptions()
     options.add_argument('--headless')
@@ -57,7 +56,6 @@ def main():
         if leftTime == 2:
             text = list1[i][0] + "あと" + str(leftTime) + "時間ですよ"
             slack.chat.post_message('URZM8NGHY', str(text), as_user=True)
-    slack.chat.post_message('URZM8NGHY', "テストです", as_user=True)
     driver.quit()
 
 
