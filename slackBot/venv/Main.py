@@ -54,9 +54,10 @@ def main():
     for i in range(len(list1)):
         leftTime = math.ceil(
             (datetime.datetime.strptime(list1[i][1], "%Y/%m/%d %H:%M") - datetime.datetime.now()).seconds / 3600)
-        if leftTime == 1:
+        if leftTime == 2:
             text = list1[i][0] + "あと" + str(leftTime) + "時間ですよ"
             slack.chat.post_message('URZM8NGHY', str(text), as_user=True)
+    slack.chat.post_message('URZM8NGHY', "テストです", as_user=True)
     driver.quit()
 
 
