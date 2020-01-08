@@ -15,7 +15,7 @@ import time
 
 def main():
     slack = Slacker(slackbot_settings.API_TOKEN)
-
+    slack.chat.post_message('URZM8NGHY', "テストです11", as_user=True)
     print("取得します")
     options = ChromeOptions()
     options.add_argument('--headless')
