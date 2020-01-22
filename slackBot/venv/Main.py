@@ -11,6 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 import datetime
 from selenium.common.exceptions import NoSuchElementException
 import time
+import TrainInfo as ti
 
 
 def main():
@@ -57,6 +58,11 @@ def main():
             text = list1[i][0] + "あと" + str(leftTime) + "時間ですよ"
             slack.chat.post_message('URZM8NGHY', str(text), as_user=True)
     driver.quit()
+    if datetime.datetime.now().hour == 7:
+        train = ti.TrainInfo()
+        slack.chat.post_message('#trainInfo', train.m(), as_user=True)
+    else:
+        print("7時ではありません")
 
 
 if __name__ == "__main__":
