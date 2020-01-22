@@ -13,9 +13,10 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 import TrainInfo as ti
 
+slack = Slacker(slackbot_settings.API_TOKEN)
 
-def main():
-    slack = Slacker(slackbot_settings.API_TOKEN)
+
+def homework():
     print("取得します")
     options = ChromeOptions()
     options.add_argument('--headless')
@@ -58,6 +59,9 @@ def main():
             text = list1[i][0] + "あと" + str(leftTime) + "時間ですよ"
             slack.chat.post_message('URZM8NGHY', str(text), as_user=True)
     driver.quit()
+
+
+def trainI():
     if datetime.datetime.now().hour == 7:
         train = ti.TrainInfo()
         slack.chat.post_message('#trainInfo', train.m(), as_user=True)
@@ -67,4 +71,5 @@ def main():
 
 if __name__ == "__main__":
     print('starting slackbot')
-    main()
+    homework()
+    trainI()
