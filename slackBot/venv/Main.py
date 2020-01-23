@@ -62,11 +62,11 @@ def homework():
 
 
 def trainI():
-    if datetime.datetime.now().hour == 7:
-        train = ti.TrainInfo()
-        slack.chat.post_message('#trainInfo', train.m(), as_user=True)
-    else:
-        print("7時ではありません")
+    # if datetime.datetime.now().hour == 7:
+    train = ti.TrainInfo()
+    slack.chat.post_message('#trainInfo', train.m(), as_user=True)
+    # else:
+    #     print("7時ではありません")
 
 
 if __name__ == "__main__":
