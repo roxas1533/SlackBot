@@ -3,7 +3,7 @@ import json
 
 import datetime
 
-trainList = ['中央線快速電車', '多摩湖線']
+trainList = ['中央線快速電車', '多摩湖線', '総武']
 
 
 class TrainInfo:
