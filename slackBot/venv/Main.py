@@ -2,6 +2,7 @@ from slackbot.bot import Bot
 from slacker import Slacker
 import math
 import slackbot_settings
+import os
 import chromedriver_binary
 from selenium import webdriver
 from selenium.webdriver import Chrome, ChromeOptions
@@ -24,8 +25,8 @@ def homework():
     driver.get('https://hcms.hosei.ac.jp/')
     print("取得中...")
     WebDriverWait(driver, 15).until(EC.presence_of_all_elements_located)
-    driver.find_element_by_xpath("//*[@id='username']").send_keys("19x3157")
-    driver.find_element_by_xpath("//*[@id='password']").send_keys("X2y57JPf")
+    driver.find_element_by_xpath("//*[@id='username']").send_keys(os.environ['ID'])
+    driver.find_element_by_xpath("//*[@id='password']").send_keys(os.environ['PASS'])
     driver.find_element_by_css_selector("button.form-element.form-button").click()
     driver.implicitly_wait(10)
     print("ログイン完了")
