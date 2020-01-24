@@ -17,7 +17,7 @@ class TrainInfo:
             for t in trainList:
                 if t in con['name']:
                     lastTime = datetime.datetime.fromtimestamp(con['lastupdate_gmt'])
-                    text += "con['name'],更新時間：{0:%H:%M}".format(lastTime)
+                    text += con['name']+",更新時間：{0:%H:%M}\n".format(lastTime)
                     flag = True
         if not flag:
             text += "現在遅延している電車はありません"
