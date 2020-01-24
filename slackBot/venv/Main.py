@@ -67,7 +67,7 @@ def trainI():
         train = ti.TrainInfo()
         slack.chat.post_message('#trainInfo', train.m(), as_user=True)
     else:
-        print("7時ではありません")
+        print(datetime.datetime.now())
 
 
 if __name__ == "__main__":
