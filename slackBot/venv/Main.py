@@ -63,7 +63,7 @@ def homework():
 
 
 def trainI():
-    if datetime.datetime.now().hour in (7, 8, 9, 11):
+    if datetime.datetime.now().hour in (7, 8, 9):
         train = ti.TrainInfo()
         slack.chat.post_message('#trainInfo', train.m(), as_user=True)
     else:
