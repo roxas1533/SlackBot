@@ -13,6 +13,7 @@ import datetime
 from selenium.common.exceptions import NoSuchElementException
 import time
 import TrainInfo as ti
+import count_commit as cc
 
 slack = Slacker(slackbot_settings.API_TOKEN)
 
@@ -74,3 +75,4 @@ if __name__ == "__main__":
     print('starting slackbot')
     homework()
     trainI()
+    cc.CC().startCount()
