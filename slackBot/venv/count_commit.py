@@ -1,7 +1,9 @@
 import requests
 import os
+import datetime
+import tweetCommit as tw
 
-headers = {"Authorization": "Bearer" + os.environ['Authorization']}
+headers = {"Authorization": "Bearer " + os.environ['Authorization']}
 
 
 def run_query(query, variables):
@@ -15,11 +17,11 @@ def run_query(query, variables):
 
 # The GraphQL query (with a few aditional bits included) itself defined as a multi-line string.
 query = """
-query($name: String!){
+query($name: String!,$from: DateTime!,$to:DateTime!){
   user(login: $name) {
     name
     email
-    contributionsCollection(from: "2020-01-25T00:00:00", to: "2020-01-26T00:00:00") {
+    contributionsCollection(from: $from, to: $to) {
       totalRepositoryContributions
       totalCommitContributions
       commitContributionsByRepository {
@@ -35,9 +37,11 @@ query($name: String!){
 }
 """
 variables = {
-    "name": "roxas1533"
+    "name": "roxas1533",
+    "to": "{0:%Y-%m-%dT}00:00:00".format(datetime.datetime.now().date()),
+    "from": "{0:%Y-%m-%dT}00:00:00".format((datetime.datetime.now() - datetime.timedelta(days=1)).date())
 }
 result = run_query(query, variables)
 print(result)
 count_commit = result["data"]["user"]["contributionsCollection"]["totalCommitContributions"]
-print(count_commit)
+tw.tweet("@k365990900\n今日のコミットは{}でした".format(count_commit))
