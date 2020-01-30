@@ -75,5 +75,5 @@ if __name__ == "__main__":
     print('starting slackbot')
     homework()
     trainI()
-    if datetime.datetime.now().hour in 0:
+    if datetime.datetime.now().hour == 0:
         cc.CC().startCount()
